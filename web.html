@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Амьтдын зураг</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="site-header">
+        <h1>Амьтдын зураг</h1>
+        <p class="subtitle">Нэрээр нь хайж зураг шүүж үзэх боломжтой</p>
+    </header>
+
+    <main class="container">
+        <!-- Хайлт -->
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Амьтдын нэрээр хайх... (жишээ: Тэмээ, Морь)" />
+        </div>
+
+        <!-- Галлерей -->
+        <section class="gallery" id="gallery">
+            <article class="animal-card">
+                <img src="gallery/temee.jpg" alt="Тэмээ" />
+                <div class="animal-name">Тэмээ</div>
+            </article>
+
+            <article class="animal-card">
+                <img src="gallery/bars.jpg" alt="Барс" />
+                <div class="animal-name">Барс</div>
+            </article>
+
+            <article class="animal-card">
+                <img src="gallery/mori.jpg" alt="Морь" />
+                <div class="animal-name">Морь</div>
+            </article>
+
+            <article class="animal-card">
+                <img src="gallery/sheep.jpg" alt="Хонь" />
+                <div class="animal-name">Хонь</div>
+            </article>
+
+            <article class="animal-card">
+                <img src="gallery/tuulai.jpg" alt="Туулай" />
+                <div class="animal-name">Туулай</div>
+            </article>
+
+            <article class="animal-card">
+                <img src="gallery/nohoi.jpg" alt="Нохой" />
+                <div class="animal-name">Нохой</div>
+            </article>
+            <article class="animal-card">
+                <img src="gallery/nohoi2.jpg" alt="Нохой" />
+                <div class="animal-name">Нохой</div>
+            </article>
+            <article class="animal-card">
+                <img src="gallery/pig.jpg" alt="Гахай" />
+                <div class="animal-name">Гахай</div>
+            </article>
+            <article class="animal-card">
+                <img src="gallery/pig2.jpg" alt="Гахай" />
+                <div class="animal-name">Гахай</div>
+            </article>
+            <article class="animal-card">
+                <img src="gallery/monkey.jpg" alt="Сармагчин" />
+                <div class="animal-name">Сармагчин</div>
+            </article>
+            <article class="animal-card">
+                <img src="gallery/monkey2.jpg" alt="Сармагчин" />
+                <div class="animal-name">Сармагчин</div>
+            </article>
+            <article class="animal-card">
+                <img src="gallery/crocodile.jpg" alt="матар" />
+                <div class="animal-name">матар</div>
+            </article>
+            <article class="animal-card">
+                <img src="gallery/bear.jpg" alt="баавгай" />
+                <div class="animal-name">баавгай</div>
+            </article>
+            <article class="animal-card">
+                <img src="gallery/bear2.jpg" alt="баавгай" />
+                <div class="animal-name">баавгай</div>
+            </article>
+            <article class="animal-card">
+                <img src="gallery/turtle.jpg" alt="яст мэлхий" />
+                <div class="animal-name">яст мэлхий</div>
+            </article>
+            <article class="animal-card">
+                <img src="gallery/whale.jpg" alt="халим" />
+                <div class="animal-name">халим</div>
+            </article>
+            <article class="animal-card">
+                <img src="gallery/whale2.jpg" alt="халим" />
+                <div class="animal-name">халим</div>
+            </article>
+            <article class="animal-card">
+                <img src="gallery/cow.jpg" alt="үхэр" />
+                <div class="animal-name">үхэр</div>
+            </article>
+            <article class="animal-card">
+                <img src="gallery/cow2.jpg" alt="үхэр" />
+                <div class="animal-name">үхэр</div>
+            </article>
+            <article class="animal-card">
+                <img src="gallery/panda.jpg" alt="хулсны баавгай" />
+                <div class="animal-name">хулсны баавгай</div>
+            </article>
+            <article class="animal-card">
+                <img src="gallery/cat.jpg" alt="муур" />
+                <div class="animal-name">муур</div>
+            </article>
+            <article class="animal-card">
+                <img src="gallery/cat2.jpg" alt="муур" />
+                <div class="animal-name">муур</div>
+            </article>
+
+
+
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© Амьтдын галлерей</p>
+    </footer>
+
+    <!-- JavaScript: хайлт логик -->
+    <script>
+        const searchInput = document.getElementById("searchInput");
+        const cards = document.querySelectorAll(".animal-card");
+
+        function filterCards() {
+            const filter = searchInput.value.trim().toLowerCase();
+            cards.forEach(card => {
+                const name = card.querySelector(".animal-name").textContent.toLowerCase();
+                if (name.includes(filter)) {
+                    card.style.display = ""; // default (flex/grid child)
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        // realtime шүүх (бичих болгонд)
+        searchInput.addEventListener("input", filterCards);
+
+        // optional: Enter дарахад анхны үгэж тайлах (гүйцэт боломж)
+        searchInput.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                searchInput.value = "";
+                filterCards();
+            }
+        });
+    </script>
+</body>
+
+</html>
